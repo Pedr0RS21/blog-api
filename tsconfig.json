@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    /* Salida */
+    "rootDir": "src",
+    "outDir": "dist",
+
+    /* Entorno (Node ESM) */
+    "target": "ES2021",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "lib": ["ES2021"],
+    "types": ["node"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* TypeORM (decoradores) */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    /* Calidad */
+    "strict": true,
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    /* Opts útiles en DX */
+    "sourceMap": true,
+    "declaration": false,        // en backend normalmente no necesitas d.ts
+    "declarationMap": false,
+    "isolatedModules": true,
+
+    /* Limpieza de imports ESM */
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src", "src/types"],
+  "exclude": ["node_modules", "dist"]
+}
