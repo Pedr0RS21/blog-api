@@ -9,7 +9,7 @@ import { PRIVILEGIOS } from '../constants/privilegios';
 const usuarioRouter = Router();
 
 // POST /api/usuarios - Crear usuario
-usuarioRouter.post('/',
+usuarioRouter.post('/crearUsuario',
     body('name')
         .notEmpty().withMessage('El nombre es requerido'),
     body('lastName')
@@ -32,7 +32,7 @@ usuarioRouter.post('/',
 );
 
 // GET /api/usuarios - Listar usuarios activos
-usuarioRouter.get('/',
+usuarioRouter.get('/obtenerUsuarios',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.OBTENER_USUARIOS),
     UsuarioController.obtenerUsuarios
@@ -48,7 +48,7 @@ usuarioRouter.get('/:idUsuario/privilegios',
 );
 
 // GET /api/usuarios/:idUsuario - Obtener usuario por ID
-usuarioRouter.get('/:idUsuario',
+usuarioRouter.get('obtenerUsuario/:idUsuario',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.OBTENER_USUARIO_ID),
     param('idUsuario').isInt().withMessage('ID no válido'),
@@ -57,7 +57,7 @@ usuarioRouter.get('/:idUsuario',
 );
 
 // PUT /api/usuarios/:idUsuario - Editar usuario
-usuarioRouter.put('/:idUsuario',
+usuarioRouter.put('editarUsuario/:idUsuario',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.EDITAR_USUARIO),
     param('idUsuario').isInt().withMessage('ID no válido'),
@@ -88,7 +88,7 @@ usuarioRouter.put('/:idUsuario',
 );
 
 // PATCH /api/usuarios/:idUsuario/inactivar - Inactivar usuario
-usuarioRouter.patch('/:idUsuario/inactivar',
+usuarioRouter.patch('inactivarUsuario/:idUsuario',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.INACTIVAR_USUARIO),
     param('idUsuario').isInt().withMessage('ID no válido'),
@@ -97,7 +97,7 @@ usuarioRouter.patch('/:idUsuario/inactivar',
 );
 
 // PUT /api/usuarios/:idUsuario/roles - Asignar roles (reemplaza todos)
-usuarioRouter.put('/:idUsuario/roles',
+usuarioRouter.put('/roles/:idUsuario',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.ASIGNAR_ROLES_USUARIO),
     param('idUsuario').isInt().withMessage('ID de usuario no válido'),
@@ -109,7 +109,7 @@ usuarioRouter.put('/:idUsuario/roles',
 );
 
 // POST /api/usuarios/:idUsuario/roles - Agregar roles (sin quitar existentes)
-usuarioRouter.post('/:idUsuario/roles',
+usuarioRouter.post('/roles/:idUsuario',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.AGREGAR_ROLES_USUARIO),
     param('idUsuario').isInt().withMessage('ID de usuario no válido'),
@@ -121,7 +121,7 @@ usuarioRouter.post('/:idUsuario/roles',
 );
 
 // DELETE /api/usuarios/:idUsuario/roles/todos - Remover todos los roles
-usuarioRouter.delete('/:idUsuario/roles/todos',
+usuarioRouter.delete('/roles/todos/:idUsuario',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.REMOVER_TODOS_ROLES_USUARIO),
     param('idUsuario').isInt().withMessage('ID de usuario no válido'),
@@ -130,7 +130,7 @@ usuarioRouter.delete('/:idUsuario/roles/todos',
 );
 
 // DELETE /api/usuarios/:idUsuario/roles - Remover roles específicos
-usuarioRouter.delete('/:idUsuario/roles',
+usuarioRouter.delete('/roles/:idUsuario',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.REMOVER_ROLES_USUARIO),
     param('idUsuario').isInt().withMessage('ID de usuario no válido'),

@@ -7,6 +7,8 @@ import { errorHandler } from './middlewares/error.middleware.js';
 import authRoutes from './routers/auth.routes.js';
 import userRoutes from './routers/user.routes.js';
 import roleRouter from './routers/role.router.js';
+import postRouter from './routers/post.routes.js';
+import commentRouter from './routers/comment.routes.js';
 
 const app = express();
 app.disable('x-powered-by');
@@ -23,6 +25,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 //Ruta para el CRUD de roles
 app.use('/api/roles', roleRouter); 
+//Ruta para el CRUD de los post
+app.use('api/post',postRouter)
+//Ruta para el CRUD de los comentarios
+app.use('api/comment',commentRouter)
 
 // ERROR 404
 app.use((_req, res) => res.status(404).json({ message: 'Recurso no encontrado' }));

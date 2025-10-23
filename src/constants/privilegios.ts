@@ -36,6 +36,7 @@ const POSTS = {
   AGREGAR_POST: 'agregar_post',
   OBTENER_POSTS: 'obtener_posts',
   OBTENER_POST_ID: 'obtener_post_id',
+  OBTENER_POSTS_USUARIO: 'obtener_posts_usuario',
   EDITAR_POST: 'editar_post',
   ELIMINAR_POST: 'eliminar_post',
   PUBLICAR_POST: 'publicar_post',         // si manejas estado publicado/borrador
@@ -47,6 +48,8 @@ const COMENTARIOS = {
   AGREGAR_COMENTARIO: 'agregar_comentario',
   OBTENER_COMENTARIOS: 'obtener_comentarios',     // por post o global
   OBTENER_COMENTARIO_ID: 'obtener_comentario_id',
+  OBTENER_COMENTARIOS_POST: 'obtener_comentarios_post',
+  OBTENER_COMENTARIOS_USUARIO: 'obtener_comentarios_usuario',
   EDITAR_COMENTARIO: 'editar_comentario',
   ELIMINAR_COMENTARIO: 'eliminar_comentario',
   MODERAR_COMENTARIO: 'moderar_comentario',       // ocultar/aprobar, si aplica
@@ -54,13 +57,15 @@ const COMENTARIOS = {
 
 // ======== AUTENTICACIÓN / SISTEMA ========
 const SISTEMA = {
-  VER_ME: 'ver_me',                   // acceder a /auth/me
+  LOGIN: 'login',                     // POST /auth/login
+  REGISTER: 'register',               // POST /auth/register
+  VER_ME: 'ver_me',                   // acceder a /auth/me (obtener usuario autenticado)
   VER_HEALTH: 'ver_health',           // GET /health (si lo proteges)
 } as const;
 
 /**
  * Mapa completo de privilegios de la API
- * (Exporta una sola constante con todo, como en tu ejemplo)
+ * Exporta una sola constante con todo
  */
 export const PRIVILEGIOS = {
   ...USUARIOS,

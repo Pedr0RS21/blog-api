@@ -9,7 +9,7 @@ import { PRIVILEGIOS } from '../constants/privilegios';
 const roleRouter = Router();
 
 // POST /api/roles - Crear rol
-roleRouter.post('/',
+roleRouter.post('/crearRol',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.AGREGAR_ROL),
     body('name')
@@ -26,14 +26,14 @@ roleRouter.post('/',
 );
 
 // GET /api/roles - Listar roles activos
-roleRouter.get('/',
+roleRouter.get('/obtenerRoles',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.OBTENER_ROLES),
     RoleController.obtenerRoles
 );
 
 // GET /api/roles/:idRole - Obtener rol por ID
-roleRouter.get('/:idRole',
+roleRouter.get('obtenerRol/:idRole',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.OBTENER_ROL_ID),
     param('idRole').isInt().withMessage('ID no válido'),
@@ -42,7 +42,7 @@ roleRouter.get('/:idRole',
 );
 
 // PUT /api/roles/:idRole - Editar rol
-roleRouter.put('/:idRole',
+roleRouter.put('editarRol/:idRole',
     isAuthenticated,
     requirePrivileges(PRIVILEGIOS.EDITAR_ROL),
     param('idRole').isInt().withMessage('ID no válido'),
