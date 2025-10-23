@@ -24,7 +24,7 @@ Esta es una API RESTful robusta para la gestión de un blog, construida con Node
 ## Instalación y Configuración
 
 1.  Clonar el repositorio:
-    `git clone https://tu-repositorio.git`
+    `git clone https://github.com/Pedr0RS21/blog-api.git`
     `cd tu-repositorio`
 
 2.  Instalar dependencias:
